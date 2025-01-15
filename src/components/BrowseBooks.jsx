@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import BookCard from "./BookCard";
@@ -19,7 +19,8 @@ function BrowseBooks() {
     let url;
     if (category === "all") url = `${baseUrl}/api/v1/books/all`;
     else url = `${baseUrl}/api/v1/books/category/${category}`;
-    fetchBooks(url);
+    if (category.startsWith("search")) searchBook();
+    else fetchBooks(url);
   }, [category]);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function BrowseBooks() {
     setFilteredBooks(resJson.data);
   }
 
-  async function searchBook(e) {
+  async function searchBook() {
     if (bookInput.trim() === "") return;
 
     const res = await fetch(`${baseUrl}/api/v1/books/search?q=${bookInput}`);
@@ -46,22 +47,22 @@ function BrowseBooks() {
 
   return (
     <section className="min-h-[488px] flex flex-col items-center mt-7">
-      <h1 className="text-3xl font-semibold italic">
+      <h1 className="text-3xl text-center font-semibold italic">
         Your Perfect Book is Just a Search Away!
       </h1>
-      <article className="mt-7 flex items-center">
+      <article className="mt-7 flex items-center px-2">
         <input
           value={bookInput}
           onChange={(e) => setBookInput(e.target.value)}
           type="text"
-          className="min-w-[500px] ps-4 pe-3 py-2 text-lg font-semibold rounded-s-full outline-none border-blue-900 border-2"
+          className="w-full min-[650px]:min-w-[500px] ps-4 pe-3 py-2 text-lg font-semibold rounded-s-full outline-none border-blue-900 border-2"
           placeholder="Search by Book Name or Author Name"
         />
-        <button
-          onClick={searchBook}
-          className="bg-sky-900 text-white font-semibold text-lg px-5 py-[10px] rounded-e-full">
-          Search
-        </button>
+        <Link to={`/books/search-${bookInput}`}>
+          <button className="bg-sky-900 text-white font-semibold text-lg px-5 py-[10px] rounded-e-full">
+            Search
+          </button>
+        </Link>
       </article>
       <section className="mt-14 flex flex-wrap justify-center gap-x-5 gap-y-14">
         {filteredBooks.length ? (

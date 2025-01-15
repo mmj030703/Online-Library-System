@@ -70,7 +70,7 @@ export async function getBookByID(req, res) {
             return res.status(404).json({ errorCode: "BOOK_NOT_FOUND", message: "Book not found !" });
         }
 
-        return res.status(400).json({ status: "success", data: book });
+        return res.status(200).json({ status: "success", data: book });
     } catch (error) {
         return res.status(500).json({ error: error.message || error, errorCode: "GET_BOOK_BY_ID_ERROR", message: "Something went error !" });
     }
@@ -84,11 +84,16 @@ export async function getBooksByCategory(req, res) {
             return res.status(400).json({ errorCode: "CATEGORY_MISSING", message: "Category is missing !" });
         }
 
-        const categories = await Book.find({
+        console.log(category)
+
+        const books = await Book.find({
             category
         });
 
-        res.status(200).send({ status: "success", data: categories });
+        console.log(books);
+
+
+        res.status(200).send({ status: "success", data: books });
     } catch (error) {
         return res.status(500).json({ error: error.message || error, errorCode: "GET_BOOKS_BY_CATEGORY", message: "Internal Server Error !" });
     }
@@ -102,10 +107,17 @@ export async function getBooksBySearch(req, res) {
             return res.status(400).json({ errorCode: "SEARCH_EMPTY", message: "Search is empty !" });
         }
 
-        const books = await Book
-            .find({ $text: { $search: q } })
-            .sort({ score: { $meta: "textScore" } }) // Sort by relevance
-            .select({ score: { $meta: "textScore" } });
+        const books = await Book.aggregate([
+            {
+                $search: {
+                    index: "books-search",
+                    text: {
+                        query: q,
+                        path: ["title", "author"]
+                    }
+                }
+            },
+        ])
 
         res.status(200).send({ status: "success", data: books });
     } catch (error) {

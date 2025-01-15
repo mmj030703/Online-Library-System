@@ -17,14 +17,16 @@ function Categories() {
   }, []);
 
   return (
-    <section className="mt-4 px-5">
+    <section className="mt-8 px-5 overflow-hidden">
       <h2 className="text-[25px] font-semibold">Search by Categories</h2>
-      <section className="mt-3 flex gap-x-5">
+      <section
+        id="scrollbar-hide"
+        className="mt-3 flex gap-x-5 overflow-x-scroll">
         {categories?.map((category) => {
           return (
             <Link to={"/books/" + category?.name} key={category?._id}>
-              <article className="bg-blue-900 text-white p-4 rounded-md">
-                <p>
+              <article className="bg-blue-900 text-white p-2 min-[500px]:p-3 min-[740px]:p-4 rounded-md whitespace-nowrap">
+                <p className="">
                   {category?.name.slice(0, 1).toUpperCase() +
                     category?.name.slice(1)}
                 </p>

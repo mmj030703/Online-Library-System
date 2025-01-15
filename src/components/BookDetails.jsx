@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BreadCrumb from "./BreadCrumb";
 
 function BookDetails() {
   const [book, setBook] = useState(null);
   const { bookId } = useParams("bookId");
-  const location = useLocation();
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
@@ -25,8 +24,8 @@ function BookDetails() {
   }, []);
 
   return (
-    <section>
-      <BreadCrumb book={book} category={location.pathname.split("/")[2]} />
+    <section className="px-2">
+      {book && <BreadCrumb book={book} category={book.category} />}
       <section className="min-h-[428px] flex justify-center">
         {book ? (
           <section className="place-items-center bg-slate-200 shadow-lg px-4 pt-3 pb-3 relative">

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 function PopularBooks() {
   const books = useSelector((state) => state.bookSlice.books);
-  console.log(books);
 
   return (
     <section className="mt-4 px-5">
