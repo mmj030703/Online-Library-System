@@ -11,7 +11,7 @@ import categoriesRouter from "./routes/categories.routes.js";
 import cors from "cors";
 
 const corsOptions = ({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://online-library-system-mmj030703.onrender.com"],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ['Content-Type']
