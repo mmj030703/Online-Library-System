@@ -2,9 +2,9 @@ import ImageKit from "imagekit";
 import fs from "fs";
 
 var imagekit = new ImageKit({
-    publicKey: "public_c2ylLwOd16WyDvquMyXXqbGNFig=",
-    privateKey: "private_G2N2ritv/eGvRANJoI8V2HWqoE8=",
-    urlEndpoint: "https://ik.imagekit.io/mmj030703"
+    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
 });
 
 

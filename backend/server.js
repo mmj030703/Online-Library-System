@@ -1,9 +1,4 @@
-import dotenv from "dotenv";
-
-dotenv.config({
-    path: "./.env"
-});
-
+import "./config/config.js";
 import express from "express";
 import mongoose from "mongoose";
 import booksRouter from "./routes/books.routes.js";
@@ -19,7 +14,7 @@ const corsOptions = ({
 
 const server = new express();
 
-mongoose.connect("mongodb+srv://mayankjain7738:mayankjain@cluster0.opnfl.mongodb.net/LibraryHub");
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DATABASE_NAME}`);
 const db = mongoose.connection;
 
 server.use(cors(corsOptions));
