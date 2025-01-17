@@ -1,8 +1,6 @@
 # **Online Library System**
 
-_An online library system to manage books.!_
-
----
+Welcome to the **Online Library System**, a comprehensive platform for viewing different category of books. Built using the MERN stack, this system provides functionality for browsing and viewing books.
 
 ## Table of Contents
 
@@ -10,44 +8,55 @@ _An online library system to manage books.!_
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Technologies Used](#technologies-used)
-6. [Screenshots](#screenshots)
-7. [License](#license)
-
----
+5. [API Endpoints](#api-endpoints)
+6. [Project Structure](#project-structure)
+7. [Technologies Used](#technologies-used)
+8. [License](#license)
 
 ## Project Overview
 
-This project is a **React-based Online Library System** that allows users to manage a collection of books easily. Users can browse, add and view details from their library. Designed with an intuitive UI.
+The **Online Library System** is a **MERN-based application** designed for users to view different category of books. With an intuitive UI, it allows users to browse books by category, search books, add new entries by admin, and view detailed information about each book.
 
 ### Live Demo
 
-_[Link](https://online-library-system.netlify.app/)_
+_[Link to Demo](https://online-library-system-mmj030703.onrender.com/)_
 
 ---
 
 ## Features
 
-- **Add New Books**: Users can add new books to their library with details like title, author, category, release year, etc.
-- **Browse Library**: Users can browse through all available books by category or search.
-- **View Book Details**: Access detailed information about each book, including author, description, rating, etc.
+- **Add New Books**: Admin can add books with details like title, author, category, and publication year.
+- **Browse Library**: View all books categorized for easy navigation.
+- **Search Books**: Quickly find books.
+- **View Book Details**: Access detailed information such as the description, rating, and release year of a book.
+- **Responsive Design**: Optimized for all screen sizes.
 
 ---
 
 ## Installation
 
-To run this project locally, follow these steps:
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [MongoDB](https://www.mongodb.com/try/download/community) (local or hosted instance)
+- [ImageKit](https://imagekit.io/) (Create ImageKit account)
+
+---
+
+### Backend Setup
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/mmj030703/Internshala-Assignment-React-2-Online-Library-System.git
+   git clone https://github.com/mmj030703/Online-Library-System.git
    ```
 
-2. Navigate to the project folder:
+2. Change Directory
 
    ```bash
-   cd '.\Online Library System\'
+   cd ./backend
    ```
 
 3. Install dependencies:
@@ -56,33 +65,121 @@ To run this project locally, follow these steps:
    npm install
    ```
 
-4. Start the development server:
+4. Create a `.env` file and add the following:
+
+   ```env
+   PORT=5000
+   DATABASE_NAME=<db_name>
+   MONGODB_URI=<mongodb_uri>
+   IMAGEKIT_PUBLIC_KEY=<imagekit_publickey>
+   IMAGEKIT_PRIVATE_KEY=<imagekit_privatekey>
+   IMAGEKIT_URL_ENDPOINT=<imagekit_url_endpoint>
+   ```
+
+5. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+   The backend will run on `http://localhost:5000`.
+
+---
+
+### Frontend Setup
+
+1. Navigate to the frontend repository:
+
+   ```bash
+   cd Online-Library-System
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
 
    ```bash
    npm run dev
    ```
 
+   The frontend will run on `http://localhost:5173`.
+
 ---
 
 ## Usage
 
-1. Open the app and browse the available books by category in the library.
-2. Use the "Add Book" link in the navbar to input new book details and add them to the library.
-3. Click on more details button on any book to view its details.
-4. In the browse books page you can enter the name of the book or author to search.
+1. Open the application and browse the library to view available books by category.
+2. Admin can use the "Add Book" link in the navbar to add new books to the collection.
+3. Click on a book to view its detailed information.
+4. Use the search bar on the browse page to locate books by title or author.
+
+---
+
+## API Endpoints
+
+#### Base URL
+
+Local Base Url: `http://localhost:5000/api/v1`
+
+Hosted Base Url: `https://online-library-system-97mj.onrender.com/api/v1`
+
+### Books
+
+| Method | Endpoint                    | Description               |
+| ------ | --------------------------- | ------------------------- |
+| GET    | `/books/all`                | Get all books             |
+| POST   | `/books/add`                | Add a new book            |
+| GET    | `/books/book/:id`           | Get book details by ID    |
+| GET    | `/books/category/:category` | Get books by cateogry ID  |
+| GET    | `/books/search`             | Get books by search query |
+
+### Category
+
+| Method | Endpoint | Description |
+| ------ | ------------------ | --------------------------- | |
+| POST | `/categories/add/:category` | Add a new category |
+| GET | `/categories/all` | Get all categories |
+
+---
+
+## Project Structure
+
+```plaintext
+online-library-system/
+├── backend/
+│   ├── config/          # Configuration files
+│   ├── controllers/     # Backend logic
+│   ├── models/          # Mongoose models
+│   ├── routes/          # Backend API routes
+│   ├── middlewares/     # Backend middlewares
+│   ├── utils/           # Utility files
+│   └── server.js        # Backend entry point
+├── public/
+├── src/
+│   ├── components/      # React components
+│   ├── utils/           # Utility files
+│     ├── store/          # Redux Store
+│        ├── slices/          # Redux Slices
+│        ├── bookStore.js/          # Redux Store file
+│   ├── pages/           # React pages
+│   ├── App.jsx          # Application component
+│   └── main.jsx         # Frontend entry point
+```
 
 ---
 
 ## Technologies Used
 
-- **React**: Front-end library for building the UI.
-- **Tailwind CSS**: For styling the components.
+- **Backend**:
 
----
+  - Node.js, Express, MongoDB, Mongoose, ImageKit
 
-## Screenshots
-
-[Screenshots](https://github.com/mmj030703/Internshala-Assignment-React-2-Online-Library-System/wiki/Screenshots-of-the-App)
+- **Frontend**:
+  - React, Tailwind CSS, Redux Toolkit, React Router.
 
 ---
 
