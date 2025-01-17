@@ -139,10 +139,10 @@ Hosted Base Url: `https://online-library-system-97mj.onrender.com/api/v1`
 
 ### Category
 
-| Method | Endpoint | Description |
-| ------ | ------------------ | --------------------------- | |
-| POST | `/categories/add/:category` | Add a new category |
-| GET | `/categories/all` | Get all categories |
+| Method | Endpoint                    | Description        |
+| ------ | --------------------------- | ------------------ |
+| POST   | `/categories/add/:category` | Add a new category |
+| GET    | `/categories/all`           | Get all categories |
 
 ---
 
