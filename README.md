@@ -15,7 +15,7 @@ Welcome to the **Online Library System**, a comprehensive platform for viewing d
 
 ## Project Overview
 
-The **Online Library System** is a **MERN-based application** designed for users to view different category of books. With an intuitive UI, it allows users to browse books by category, search books, add new entries by admin, and view detailed information about each book.
+The **Online Library System** is a **MERN-based application** designed for users to view different category of books. With an intuitive UI, it allows users to browse books by category, search books, add new books, and view detailed information about each book.
 
 ### Live Demo
 
@@ -25,7 +25,7 @@ _[Link to Demo](https://online-library-system-mmj030703.onrender.com/)_
 
 ## Features
 
-- **Add New Books**: Admin can add books with details like title, author, category, and publication year.
+- **Add New Books**: Users can add books with details like title, author, category, and publication year.
 - **Browse Library**: View all books categorized for easy navigation.
 - **Search Books**: Quickly find books.
 - **View Book Details**: Access detailed information such as the description, rating, and release year of a book.
@@ -113,7 +113,7 @@ Ensure you have the following installed:
 ## Usage
 
 1. Open the application and browse the library to view available books by category.
-2. Admin can use the "Add Book" link in the navbar to add new books to the collection.
+2. Users can use the "Add Book" link in the navbar to add new books to the collection.
 3. Click on a book to view its detailed information.
 4. Use the search bar on the browse page to locate books by title or author.
 
