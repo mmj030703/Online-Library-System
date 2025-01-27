@@ -10,4 +10,7 @@ booksRouter.get("/category/:category", getBooksByCategory);
 booksRouter.get("/search", getBooksBySearch);
 booksRouter.get("/book/:id", getBookByID);
 
+// Reloads server again
+booksRouter.get("/reload", (req, res) => res.status(200).send("Reload Successfull !"));
+
 export default booksRouter;
