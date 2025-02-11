@@ -36,20 +36,3 @@ server.listen(5000, () => {
 // Routes
 server.use("/api/v1/books", booksRouter);
 server.use("/api/v1/categories", categoriesRouter);
-
-////////////////////////////////////////////////////////
-const url = `https://online-library-system-97mj.onrender.com/api/v1/books/reload`; // Replace with your Render URL
-const interval = 30000; // Interval in milliseconds (30 seconds)
-
-//Reloader Function
-function reloadWebsite() {
-    fetch(url)
-        .then(response => {
-            console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
-        })
-        .catch(error => {
-            console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
-        });
-}
-
-setInterval(reloadWebsite, interval);
